@@ -1,4 +1,5 @@
 import random
+from Day007_HangmanWordList import word_list
 
 def getGuessedChar():
     guessedChar = input("Enter the guess:").lower()
@@ -6,7 +7,7 @@ def getGuessedChar():
 
 #initial Setup
 
-words = ['Apple','Orange','Banana']
+words = word_list
 spaces = '_'
 guessword = ''
 word = random.choice(words)
