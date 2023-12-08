@@ -46,30 +46,3 @@ while hangmanCount >0:
         print(guesslist)
         hangmanCount -= 1
         print('Lives:',hangmanCount)
-
-
-
-
-
-
-
-
-
-
-
-
-
-# print(spaces * len(word))
-
-# for element in word:
-#     print(element)
-#     if element.lower() == charc:
-#         print(True)
-#     else:
-#         print(False)
-
-
-# hangmanCount = 6
-
-# for i in range(hangmanCount):
-#     print(i)
