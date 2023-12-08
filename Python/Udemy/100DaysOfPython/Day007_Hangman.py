@@ -20,7 +20,6 @@ guessword = spaces * len(word)
 guesslist = [*guessword]
 wordlist = [*word]
 print(guesslist)
-print(wordlist)
 
 hangmanCount = 6
 
