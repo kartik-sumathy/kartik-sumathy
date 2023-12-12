@@ -23,7 +23,7 @@ while len(pwd) <= noChar-1:
             pwd.append(chr(ranAlphaSmall))
 
     for i in range(noSym):
-        ranSym = random.randint(0,31)
+        ranSym = random.randint(0,30)
         pwd.append(strSymbols[ranSym])
 
     for i in range(noNum):
