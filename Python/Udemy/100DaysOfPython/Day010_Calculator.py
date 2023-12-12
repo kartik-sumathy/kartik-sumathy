@@ -27,24 +27,30 @@ dictOperations = {
     '*': calcMul,
     "/": calcDiv,
 }
-proceed = 'no'
 
-while proceed != 'Exit'.lower():
-    if proceed == 'no'.lower():
-        system('clear')
-        num1 = int(input('Enter the first number'))
-        num2 = int(input('Enter the second number'))
-    elif proceed == 'yes'.lower():
-        num1 = result
-        num2 = int(input('Enter the second number'))
+def calculator():
 
-    for symbol in dictOperations:
-        print(symbol)
+    proceed = 'no'
 
-    selOper = input('Select the operator from the list')
+    while proceed != 'Exit'.lower():
+        if proceed == 'no'.lower():
+            system('clear')
+            num1 = float(input('Enter the first number'))
+            num2 = float(input('Enter the second number'))
+        elif proceed == 'yes'.lower():
+            num1 = result
+            num2 = float(input('Enter the second number'))
 
-    result = dictOperations[selOper](num1, num2)
+        for symbol in dictOperations:
+            print(symbol)
 
-    print(f"{num1} {selOper} {num2} = {result}")
+        selOper = input('Select the operator from the list')
 
-    proceed = input('Continue = Yes, or No, Exit').lower()
+        result = dictOperations[selOper](num1, num2)
+
+        print(f"{num1} {selOper} {num2} = {result}")
+
+        proceed = input('Continue = Yes, or No, Exit').lower()
+
+
+calculator()
