@@ -26,6 +26,16 @@ def cardComparison(hTotal, cTotal, hList, cList):
         printTotals(hList, hTotal, cList, cTotal)
         print("Computer Won")
 
+def cardhas11(cTotal, cList):
+    if 11 in cList and cTotal > 21:
+        cList.remove(11)
+        cList.append(1)
+        cTotal = getTotals(cList)
+        return cTotal, cList
+    else:
+        cTotal = getTotals(cList)
+        return cTotal, cList
+
 def computerCardCheck(cTotal, cList):
     while cTotal < 17:
         cList = getCards(1, cList)
@@ -60,22 +70,30 @@ def Blackjack(play):
         print(f"Your Card Sum is {HumanCardTotal}")
         print(f"Computer's first card is {ComputerFirstCard}")
         humanChoice = input('Hit or Stand').lower()
-        if humanChoice == 'stand':
-            if ComputerCardTotal < 17:
-                ComputerCardTotal, ComputerCards = computerCardCheck(ComputerCardTotal,ComputerCards)
-                print(ComputerCards,ComputerCardTotal)
-                cardComparison(HumanCardTotal, ComputerCardTotal, HumanCards, ComputerCards)
+        while humanChoice in ['hit', 'stand']:
+            if humanChoice == 'stand':
+                HumanCardTotal, HumanCards = cardhas11(HumanCardTotal, HumanCards)
+                if ComputerCardTotal < 17:
+                    ComputerCardTotal, ComputerCards = computerCardCheck(ComputerCardTotal,ComputerCards)
+                    print(ComputerCards,ComputerCardTotal)
+                    cardComparison(HumanCardTotal, ComputerCardTotal, HumanCards, ComputerCards)
+                else:
+                    cardComparison(HumanCardTotal, ComputerCardTotal, HumanCards, ComputerCards)
+                    break
+            elif humanChoice == 'hit':
+                HumanCards = getCards(1, HumanCards)
+                HumanCardTotal = getTotals(HumanCards)
+                HumanCardTotal, HumanCards = cardhas11(HumanCardTotal, HumanCards)
+                if ComputerCardTotal < 17:
+                    ComputerCardTotal, ComputerCards = computerCardCheck(ComputerCardTotal,ComputerCards)
+                    print(ComputerCards, ComputerCardTotal)
+                    cardComparison(HumanCardTotal, ComputerCardTotal, HumanCards, ComputerCards)
+                else:
+                    cardComparison(HumanCardTotal, ComputerCardTotal, HumanCards, ComputerCards)
+                    break
             else:
-                cardComparison(HumanCardTotal, ComputerCardTotal, HumanCards, ComputerCards)
-        elif humanChoice == 'hit':
-            HumanCards = getCards(1, HumanCards)
-            HumanCardTotal = getTotals(HumanCards)
-            if ComputerCardTotal < 17:
-                ComputerCardTotal, ComputerCards = computerCardCheck(ComputerCardTotal,ComputerCards)
-                print(ComputerCards, ComputerCardTotal)
-                cardComparison(HumanCardTotal, ComputerCardTotal, HumanCards, ComputerCards)
-            else:
-                cardComparison(HumanCardTotal, ComputerCardTotal, HumanCards, ComputerCards)
+                humanChoice = input('Invalid Choice, Try again, Hit or Stand').lower()
+
 
 
 print('Welcome to BlackJack')
